@@ -1,3 +1,9 @@
+# Student 1 Name: Rufaida Muhammad Sayed Ahmed
+# Student 1 ID: 9202550
+# Student 2 Name: 
+# Student 2 ID: 
+
+# Lab 1:
 # 1
 # clean the environment
 rm(list = ls())
