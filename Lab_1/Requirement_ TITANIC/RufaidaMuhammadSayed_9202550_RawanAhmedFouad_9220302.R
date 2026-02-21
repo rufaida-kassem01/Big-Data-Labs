@@ -8,10 +8,6 @@
 # clean the environment
 rm(list = ls())
 
-# set the working directory to the folder containing the data file
-getwd()
-# A dialog will open
-# navigate to titanic.csv and select it
 
 # 2
 # import the data file
