@@ -1,13 +1,16 @@
 # 1
 # clean the environment
 rm(list = ls())
+
 # set the working directory to the folder containing the data file
-# setwd("D:/CUFE_CMP_2024/Fourth_year_26/second_semster/BD/labs/Big-Data-Labs")
-# getwd()
+setwd(dirname(file.choose()))  
+# A dialog will open
+# navigate to titanic.csv and select it
 
 # 2
 # import the data file
-titanic <- read.csv("D:\\CUFE_CMP_2024\\Fourth_year_26\\second_semster\\BD\\labs\\Big-Data-Labs\\Lab_1\\Requirement_ TITANIC\\titanic.csv", stringsAsFactors = FALSE)
+titanic <- read.csv("titanic.csv", stringsAsFactors = FALSE)
+
 cat ("Data imported successfully\n")
 # # 3 data exploration
 # # a. Show the dimensions of the data frame. Hint: Use dim()
@@ -88,23 +91,31 @@ print(levels(titanic_clean$Embarked))
 # columns Cabin and Ticket from the dataset
 titanic_clean <- titanic_clean[, !(names(titanic_clean) %in% c("Cabin", "Ticket"))]
 cat("5.d Columns Cabin and Ticket have been removed from the dataset.\n")
+# print the cleaned dataset column names to verify
+cat("Columns in the cleaned dataset:\n")
+print(names(titanic_clean))
 
-# # 6 data analysis
+# 6 data analysis
 
-# # a. Show the number of males and females aboard the Titanic.
-# table(titanic_clean$Sex)
+# a. Show the number of males and females aboard the Titanic.
+cat("6.a Number of males and females aboard the Titanic:\n")
+print(table(titanic_clean$Sex))
 
-# # b. Plot a pie chart showing the number of males and females aboard the Titanic. (Hint: use
-# # pie() function).
-# pie(table(titanic_clean$Sex), main = "Number of Males and Females aboard the Titanic", col = c("blue", "red"))
+# b. Plot a pie chart showing the number of males and females aboard the Titanic. (Hint: use
+# pie() function).
+# Indicate males with a blue color and females with a red color in the above plot. (Hint: There
+# is a color parameter in any plot function).
 
-# # c. Indicate males with a blue color and females with a red color in the above plot. (Hint: There
-# # is a color parameter in any plot function).
-# # c. Show the number of people who survived and didn’t survive from each gender.
-# table(titanic_clean$Sex, titanic_clean$Survived)
-# # d. Plot a pie chart showing the number of males and females who survived only.
-# survived_by_sex <- table(titanic_clean$Sex[titanic_clean$Survived == 1])
-# pie(survived_by_sex, main = "Number of Survivors by Gender", col = c("blue", "red"))
+pie(table(titanic_clean$Sex), main = "Number of Males and Females aboard the Titanic", col = c("blue", "red"))
+
+# c. Show the number of people who survived and didn’t survive from each gender.
+cat("6.c Number of people who survived and didn’t survive from each gender:\n")
+print(table(titanic_clean$Sex, titanic_clean$Survived))
+
+# d. Plot a pie chart showing the number of males and females who survived only.
+survived_by_sex <- table(titanic_clean$Sex[titanic_clean$Survived == 1])
+pie(survived_by_sex, main = "Number of Survivors by Gender", col = c("blue", "red"))
+
 # # e. What do you conclude from that?
 # # TODO
 # # f. Show the relationship between social class and survival i.e. show how many people
