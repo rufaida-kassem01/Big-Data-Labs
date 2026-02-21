@@ -8,10 +8,6 @@
 # clean the environment
 rm(list = ls())
 
-# set the working directory to the folder containing the data file
-getwd()
-# A dialog will open
-# navigate to titanic.csv and select it
 
 # 2
 # import the data file
@@ -72,8 +68,9 @@ print(levels(titanic$Embarked))
 
 
 # # e. Can you conclude what’s needed at this step in the data analysis cycle?
-cat("4.e At this step in the data analysis cycle, we need to perform data cleaning and preprocessing.")
-
+# # At this step in the data analysis cycle, we need to perform data cleaning and preprocessing.
+cat("4.e Conclusion for this step in the data analysis cycle:\n")
+cat("At this step, we need to clean the data by handling missing values in the age variable and ensuring that the embarked variable contains only valid values. We also need to convert the embarked variable to a factor type to facilitate analysis.\n")
 
 # 5 data preprocessing
 # a. Remove the rows containing <NA> in the age variable from the data frame
@@ -92,6 +89,9 @@ print(anyNA(titanic_clean$Age))
 titanic_clean$Embarked <- factor(titanic_clean$Embarked)
 cat("5.c Levels of the embarked variable:\n")
 print(levels(titanic_clean$Embarked))
+# The embarked variable is now a factor with levels C, Q, and S, which is what we were expecting.
+cat("5.c Conclusion for this step in the data analysis cycle:\n")
+cat("The data has been cleaned successfully. There are no NA values in the age variable, and the embarked variable has been converted to a factor with the expected levels.\n")
 
 # d. Some variables are not very interesting and provide no real indicative value. Remove
 # columns Cabin and Ticket from the dataset
