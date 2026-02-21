@@ -16,37 +16,37 @@ titanic <- read.csv("titanic.csv", stringsAsFactors = FALSE)
 cat ("Data imported successfully\n")
 # # 3 data exploration
 # # a. Show the dimensions of the data frame. Hint: Use dim()
-cat("3.a. Dimensions of the data frame:\n")
+cat("\n3.a. Dimensions of the data frame:\n")
 print(dim(titanic))
 
 # b. Show the structure of the data frame. Hint: Use str()
-cat("3.b. Structure of the data frame:\n")
+cat("\n3.b. Structure of the data frame:\n")
 print(str(titanic))
 
 # c. Get more insight into data by exploring the first and the last TEN rows in the dataset.
-cat("3.c First 10 rows of the dataset:\n")
+cat("\n3.c First 10 rows of the dataset:\n")
 print(head(titanic, 10))
-cat("3.c Last 10 rows of the dataset:\n")
+cat("\n3.c Last 10 rows of the dataset:\n")
 print(tail(titanic, 10))
 
 # d. Show summary of all variables in the data frame.
-cat("3.d Summary of all variables in the data frame:\n")
+cat("\n3.d Summary of all variables in the data frame:\n")
 print(summary(titanic))
 
 # 4 variable exploration
 # a. Show a summary for the variable age only
-cat("4.a Summary for the variable age:\n")
+cat("\n4.a Summary for the variable age:\n")
 print(summary(titanic$Age))
 # b. What are the first and third quartile values for this variable? What do these values mean?
-cat("4.b The first quartile (Q1) is the value below which 25% of the data falls,\n 
-and the third quartile (Q3) is the value below which 75% of the data falls.")
+cat("\n4.b The first quartile (Q1) is the value below which 25% of the data falls,\n 
+and the third quartile (Q3) is the value below which 75% of the data falls.\n")
 # These values help to understand the distribution of the age variable and identify any potential outliers.
 
 # c. Are there any missing values in the variable age? (i.e. written as <NA>)
 # Hint: Read the documentation for is.na() and anyNA() to find out how to
 # know if a certain variable has missing values. What are the differences
 # between them? Which one is better to use in this case?
-cat("4.c Are there any missing values in the variable age?\n")
+cat("\n4.c Are there any missing values in the variable age?\n")
 print(anyNA(titanic$Age))
 
 # commented the line below to avoid printing a long logical vector
@@ -59,9 +59,9 @@ print(anyNA(titanic$Age))
 
 # # d. What is the type of the variable embarked? Show the levels of this variable. Is that what you
 # # were expecting?
-cat("4.d Type of the variable embarked:\n")
+cat("\n4.d Type of the variable embarked:\n")
 print(class(titanic$Embarked))
-cat("4.d Levels of the variable embarked:\n")
+cat("\n4.d Levels of the variable embarked:\n")
 print(levels(titanic$Embarked))
 # The variable embarked is of type character, and it does not have levels since it is not a factor. 
 # We were expecting it to be a factor variable with levels corresponding to the different ports of embark
@@ -69,42 +69,44 @@ print(levels(titanic$Embarked))
 
 # # e. Can you conclude what’s needed at this step in the data analysis cycle?
 # # At this step in the data analysis cycle, we need to perform data cleaning and preprocessing.
-cat("4.e Conclusion for this step in the data analysis cycle:\n")
-cat("At this step, we need to clean the data by handling missing values in the age variable and ensuring that the embarked variable contains only valid values. We also need to convert the embarked variable to a factor type to facilitate analysis.\n")
+cat("\n4.e Conclusion for this step in the data analysis cycle:\n")
+cat("\nAt this step, we need to clean the data by handling missing values in the age variable and ensuring that the embarked variable contains only valid values.\n
+We also need to convert the embarked variable to a factor type to facilitate analysis.\n")
 
 # 5 data preprocessing
 # a. Remove the rows containing <NA> in the age variable from the data frame
 titanic_clean <- titanic[!is.na(titanic$Age), ]
-cat("5.a Rows containing <NA> in the age variable have been removed.\n")
+cat("\n5.a Rows containing <NA> in the age variable have been removed.\n")
 
 # b. Remove the rows containing any unexpected value in the embarked variable from the
 #dataset.
 titanic_clean <- titanic_clean[titanic_clean$Embarked %in% c("C", "Q", "S"), ]
-cat("5.b Rows containing unexpected values in the embarked variable have been removed.\n")
+cat("\n5.b Rows containing unexpected values in the embarked variable have been removed.\n")
 
 # # c. Now, check that no NA values exist in the age variable. Also, factor the embarked variable
 # # and display its levels. Is that what you are expecting?
-cat("5.c Check for NA values in the age variable:\n")
+cat("\n5.c Check for NA values in the age variable:\n")
 print(anyNA(titanic_clean$Age))
 titanic_clean$Embarked <- factor(titanic_clean$Embarked)
-cat("5.c Levels of the embarked variable:\n")
+cat("\n5.c Levels of the embarked variable:\n")
 print(levels(titanic_clean$Embarked))
 # The embarked variable is now a factor with levels C, Q, and S, which is what we were expecting.
-cat("5.c Conclusion for this step in the data analysis cycle:\n")
-cat("The data has been cleaned successfully. There are no NA values in the age variable, and the embarked variable has been converted to a factor with the expected levels.\n")
+cat("\n5.c Conclusion for this step in the data analysis cycle:\n")
+cat("\nThe data has been cleaned successfully. There are no NA values in the age variable, \n
+and the embarked variable has been converted to a factor with the expected levels.\n")
 
 # d. Some variables are not very interesting and provide no real indicative value. Remove
 # columns Cabin and Ticket from the dataset
 titanic_clean <- titanic_clean[, !(names(titanic_clean) %in% c("Cabin", "Ticket"))]
-cat("5.d Columns Cabin and Ticket have been removed from the dataset.\n")
+cat("\n5.d Columns Cabin and Ticket have been removed from the dataset.\n")
 # print the cleaned dataset column names to verify
-cat("Columns in the cleaned dataset:\n")
+cat("\nColumns in the cleaned dataset:\n")
 print(names(titanic_clean))
 
 # 6 data analysis
 
 # a. Show the number of males and females aboard the Titanic.
-cat("6.a Number of males and females aboard the Titanic:\n")
+cat("\n6.a Number of males and females aboard the Titanic:\n")
 print(table(titanic_clean$Gender))
 
 # b. Plot a pie chart showing the number of males and females aboard the Titanic. (Hint: use
@@ -116,8 +118,11 @@ dev.new()
 pie(table(titanic_clean$Gender), main = "Number of Males and Females aboard the Titanic", col = c("blue", "red"))
 
 # c. Show the number of people who survived and didn’t survive from each gender.
-cat("6.c Number of people who survived and didn’t survive from each gender:\n")
-print(table(titanic_clean$Gender, titanic_clean$Survived))
+cat("\n6.c Number of people who survived and didn’t survive from each gender:\n")
+survived_by_gender <- table(titanic_clean$Gender, titanic_clean$Survived)
+rownames(survived_by_gender) <- c("Female", "Male")
+colnames(survived_by_gender) <- c("Did Not Survive", "Survived")
+print(survived_by_gender)
 
 # d. Plot a pie chart showing the number of males and females who survived only.
 survived_by_gender <- table(titanic_clean$Gender[titanic_clean$Survived == 1])
@@ -126,21 +131,20 @@ dev.new()
 pie(survived_by_gender, main = "Number of Survivors by Gender", col = c("blue", "red"))
 
 # e. What do you conclude from that?
-cat("6.e numbers of males survived < numbers of female survived")
+cat("\n6.e numbers of males survived < numbers of female survived\n\n")
 # f. Show the relationship between social class and survival i.e. show how many people
 # survived and how many people didn’t survive from each class.
-cat("6.f Relationship between social class and survival:\n")
-print(table(titanic_clean$Pclass, titanic_clean$Survived))
+cat("\n6.f Relationship between social class and survival:\n")
+survival_by_class <- table(titanic_clean$Pclass, titanic_clean$Survived)
+rownames(survival_by_class) <- c("1st Class", "2nd Class", "3rd Class")
+colnames(survival_by_class) <- c("Did Not Survive", "Survived")
+print(survival_by_class)
 
 # g. Plot this relationship as a stacked bar plot. (Hint: use barplot() function)
 # h. Indicate survived passengers with a blue color and un-survived passengers with a red color
 # in the above plot.
 # create new figure for the bar plot
 dev.new()
-survival_by_class <- table(titanic_clean$Pclass, titanic_clean$Survived)
-rownames(survival_by_class) <- c("1st Class", "2nd Class", "3rd Class")
-colnames(survival_by_class) <- c("Did Not Survive", "Survived")
-# print(survival_by_class)
 barplot(t(survival_by_class),
         beside  = FALSE,
         col     = c("red", "blue"),
@@ -151,7 +155,9 @@ barplot(t(survival_by_class),
         args.legend = list(x = "topleft", bty = "n"))
 
 # i. What do you conclude from that?
-cat("6.i inversely proportional relation between class and number of survivals, higher class, lower unsurvived people")
+cat("\n6.i The relationship between passenger class and survival is inversely proportional. \n
+Passengers in 1st class had a higher survival rate compared to those in 2nd and 3rd class.\n
+This suggests that social class played a significant role in the likelihood of survival during the Titanic disaster.\n\n")
 
 # j. Plot a box and whiskers plot for the variable age (Hint: use boxplot() function)
 # Read about the box and whiskers plot and understand it properly.
@@ -160,7 +166,7 @@ dev.new()
 boxplot(titanic_clean$Age, main = "Boxplot of Age", ylab = "Age")
 
 # k. What does this plot mean?
-cat("6.k The grey rectangle shows the middle 50% of the data.\n
+cat("\n6.k The grey rectangle shows the middle 50% of the data.\n
 Bottom of the box is the 1st quartile .\n
 Top of the box is the 3rd quartile.\n
 The thick horizontal line inside the box is the median Age ~28 \n
