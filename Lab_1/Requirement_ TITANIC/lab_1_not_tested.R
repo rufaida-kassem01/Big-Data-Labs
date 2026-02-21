@@ -106,4 +106,4 @@ plot(density(titanic_clean$Age), main = "Density Plot of Age", xlab = "Age", yla
 # Remove all columns but passenger name and whether they survived or not. Export the new
 # dataset to a file named “titanic_preprocessed.csv”
 titanic_final <- titanic_clean[, c("Name", "Survived")]
-write.csv(titanic_final, "titanic_preprocessed.csv", row.names = FALSE
+write.csv(titanic_final, "titanic_preprocessed.csv", row.names = FALSE)
