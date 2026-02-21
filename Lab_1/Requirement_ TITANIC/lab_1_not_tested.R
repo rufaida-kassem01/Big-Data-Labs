@@ -111,32 +111,38 @@ pie(table(titanic_clean$Gender), main = "Number of Males and Females aboard the 
 # c. Show the number of people who survived and didn’t survive from each gender.
 cat("6.c Number of people who survived and didn’t survive from each gender:\n")
 print(table(titanic_clean$Gender, titanic_clean$Survived))
+
 # d. Plot a pie chart showing the number of males and females who survived only.
 survived_by_gender <- table(titanic_clean$Gender[titanic_clean$Survived == 1])
 pie(survived_by_gender, main = "Number of Survivors by Gender", col = c("blue", "red"))
 
-# # e. What do you conclude from that?
-# # TODO
-# # f. Show the relationship between social class and survival i.e. show how many people
-# # survived and how many people didn’t survive from each class.
-# table(titanic_clean$Pclass, titanic_clean$Survived)
-# # g. Plot this relationship as a stacked bar plot. (Hint: use barplot() function)
-# survival_by_class <- table(titanic_clean$Pclass, titanic_clean$Survived)
-# barplot(survival_by_class, main = "Survival by Social Class", xlab = "Social Class", ylab = "Number of Passengers", col = c("red", "blue"), legend = TRUE)
-# # h. Indicate survived passengers with a blue color and un-survived passengers with a red color
-# # in the above plot.
-# # i. What do you conclude from that?
-# # TODO
-# # j. Plot a box and whiskers plot for the variable age (Hint: use boxplot() function)
-# # Read about the box and whiskers plot and understand it properly.
-# boxplot(titanic_clean$Age, main = "Boxplot of Age", ylab = "Age")
-# # k. What does this plot mean?
-# # The box and whiskers plot (or boxplot) provides a visual summary of the distribution of the Age variable. The box represents the interquartile range (IQR), which contains the middle 50% of the data. The line inside the box represents the median age. The "whiskers" extend from the box to the smallest and largest values within 1.5 times the IQR from the lower and upper quartiles, respectively. Any points outside of this range are considered outliers and are typically plotted as individual points. This plot helps to identify the central tendency, variability, and potential outliers in the Age variable.
-# # l. Plot a density distribution for the variable age.
-# plot(density(titanic_clean$Age), main = "Density Plot of Age", xlab = "Age", ylab = "Density")
+# e. What do you conclude from that?
+# TODO
+# f. Show the relationship between social class and survival i.e. show how many people
+# survived and how many people didn’t survive from each class.
+cat("6.f Relationship between social class and survival:\n")
+print(table(titanic_clean$Pclass, titanic_clean$Survived))
 
-# # 7
-# # Remove all columns but passenger name and whether they survived or not. Export the new
-# # dataset to a file named “titanic_preprocessed.csv”
-# titanic_final <- titanic_clean[, c("Name", "Survived")]
-# write.csv(titanic_final, "titanic_preprocessed.csv", row.names = FALSE)
+# g. Plot this relationship as a stacked bar plot. (Hint: use barplot() function)
+# h. Indicate survived passengers with a blue color and un-survived passengers with a red color
+# in the above plot.
+survival_by_class <- table(titanic_clean$Pclass, titanic_clean$Survived)
+barplot(survival_by_class, main = "Survival by Social Class", xlab = "Social Class", ylab = "Number of Passengers", col = c("red", "blue"), legend = TRUE)
+
+# i. What do you conclude from that?
+# TODO
+
+# j. Plot a box and whiskers plot for the variable age (Hint: use boxplot() function)
+# Read about the box and whiskers plot and understand it properly.
+boxplot(titanic_clean$Age, main = "Boxplot of Age", ylab = "Age")
+# k. What does this plot mean?
+# TODO
+
+# l. Plot a density distribution for the variable age.
+plot(density(titanic_clean$Age), main = "Density Plot of Age", xlab = "Age", ylab = "Density")
+
+# 7
+# Remove all columns but passenger name and whether they survived or not. Export the new
+# dataset to a file named “titanic_preprocessed.csv”
+titanic_final <- titanic_clean[, c("Name", "Survived")]
+write.csv(titanic_final, "titanic_preprocessed.csv", row.names = FALSE)
