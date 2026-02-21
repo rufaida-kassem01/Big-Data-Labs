@@ -135,10 +135,20 @@ print(table(titanic_clean$Pclass, titanic_clean$Survived))
 # g. Plot this relationship as a stacked bar plot. (Hint: use barplot() function)
 # h. Indicate survived passengers with a blue color and un-survived passengers with a red color
 # in the above plot.
-survival_by_class <- table(titanic_clean$Pclass, titanic_clean$Survived)
 # create new figure for the bar plot
 dev.new()
-barplot(survival_by_class, main = "Survival by Social Class", xlab = "Social Class", ylab = "Number of Passengers", col = c("red", "blue"), legend = TRUE)
+survival_by_class <- table(titanic_clean$Pclass, titanic_clean$Survived)
+rownames(survival_by_class) <- c("1st Class", "2nd Class", "3rd Class")
+colnames(survival_by_class) <- c("Did Not Survive", "Survived")
+# print(survival_by_class)
+barplot(t(survival_by_class),
+        beside  = FALSE,
+        col     = c("red", "blue"),
+        legend  = c("Did Not Survive", "Survived"),
+        main    = "Survival by Passenger Class",
+        xlab    = "Passenger Class",
+        ylab    = "Count",
+        args.legend = list(x = "topleft", bty = "n"))
 
 # i. What do you conclude from that?
 cat("6.i inversely proportional relation between class and number of survivals, higher class, lower unsurvived people")
