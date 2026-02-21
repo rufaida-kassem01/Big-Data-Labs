@@ -105,7 +105,8 @@ print(table(titanic_clean$Gender))
 # pie() function).
 # Indicate males with a blue color and females with a red color in the above plot. (Hint: There
 # is a color parameter in any plot function).
-
+# create new figure for the pie chart
+dev.new()
 pie(table(titanic_clean$Gender), main = "Number of Males and Females aboard the Titanic", col = c("blue", "red"))
 
 # c. Show the number of people who survived and didn’t survive from each gender.
@@ -114,6 +115,8 @@ print(table(titanic_clean$Gender, titanic_clean$Survived))
 
 # d. Plot a pie chart showing the number of males and females who survived only.
 survived_by_gender <- table(titanic_clean$Gender[titanic_clean$Survived == 1])
+# create new figure for the pie chart
+dev.new()
 pie(survived_by_gender, main = "Number of Survivors by Gender", col = c("blue", "red"))
 
 # e. What do you conclude from that?
@@ -127,6 +130,8 @@ print(table(titanic_clean$Pclass, titanic_clean$Survived))
 # h. Indicate survived passengers with a blue color and un-survived passengers with a red color
 # in the above plot.
 survival_by_class <- table(titanic_clean$Pclass, titanic_clean$Survived)
+# create new figure for the bar plot
+dev.new()
 barplot(survival_by_class, main = "Survival by Social Class", xlab = "Social Class", ylab = "Number of Passengers", col = c("red", "blue"), legend = TRUE)
 
 # i. What do you conclude from that?
@@ -134,11 +139,16 @@ barplot(survival_by_class, main = "Survival by Social Class", xlab = "Social Cla
 
 # j. Plot a box and whiskers plot for the variable age (Hint: use boxplot() function)
 # Read about the box and whiskers plot and understand it properly.
+# create new figure for the boxplot
+dev.new()
 boxplot(titanic_clean$Age, main = "Boxplot of Age", ylab = "Age")
+
 # k. What does this plot mean?
 # TODO
 
 # l. Plot a density distribution for the variable age.
+# create new figure for the density plot
+dev.new()
 plot(density(titanic_clean$Age), main = "Density Plot of Age", xlab = "Age", ylab = "Density")
 
 # 7
