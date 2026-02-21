@@ -41,10 +41,9 @@ print(summary(titanic))
 # a. Show a summary for the variable age only
 cat("4.a Summary for the variable age:\n")
 print(summary(titanic$Age))
-
 # b. What are the first and third quartile values for this variable? What do these values mean?
-# The first quartile (Q1) is the value below which 25% of the data falls, 
-# and the third quartile (Q3) is the value below which 75% of the data falls.
+cat("4.b The first quartile (Q1) is the value below which 25% of the data falls,\n 
+and the third quartile (Q3) is the value below which 75% of the data falls.")
 # These values help to understand the distribution of the age variable and identify any potential outliers.
 
 # c. Are there any missing values in the variable age? (i.e. written as <NA>)
@@ -73,7 +72,7 @@ print(levels(titanic$Embarked))
 
 
 # # e. Can you conclude what’s needed at this step in the data analysis cycle?
-# # At this step in the data analysis cycle, we need to perform data cleaning and preprocessing.
+cat("4.e At this step in the data analysis cycle, we need to perform data cleaning and preprocessing.")
 
 
 # 5 data preprocessing
@@ -127,7 +126,7 @@ dev.new()
 pie(survived_by_gender, main = "Number of Survivors by Gender", col = c("blue", "red"))
 
 # e. What do you conclude from that?
-# TODO
+cat("6.e numbers of males survived < numbers of female survived")
 # f. Show the relationship between social class and survival i.e. show how many people
 # survived and how many people didn’t survive from each class.
 cat("6.f Relationship between social class and survival:\n")
@@ -142,7 +141,7 @@ dev.new()
 barplot(survival_by_class, main = "Survival by Social Class", xlab = "Social Class", ylab = "Number of Passengers", col = c("red", "blue"), legend = TRUE)
 
 # i. What do you conclude from that?
-# TODO
+cat("6.i inversely proportional relation between class and number of survivals, higher class, lower unsurvived people")
 
 # j. Plot a box and whiskers plot for the variable age (Hint: use boxplot() function)
 # Read about the box and whiskers plot and understand it properly.
@@ -151,7 +150,11 @@ dev.new()
 boxplot(titanic_clean$Age, main = "Boxplot of Age", ylab = "Age")
 
 # k. What does this plot mean?
-# TODO
+cat("6.k The grey rectangle shows the middle 50% of the data.\n
+Bottom of the box is the 1st quartile .\n
+Top of the box is the 3rd quartile.\n
+The thick horizontal line inside the box is the median Age ~28 \n
+the circles outside the plot are outliers")
 
 # l. Plot a density distribution for the variable age.
 # create new figure for the density plot
