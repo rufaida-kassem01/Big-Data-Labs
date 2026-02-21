@@ -9,23 +9,23 @@ titanic <- read.csv("./Lab_1/Requirement_TITANIC/titanic.csv")
 
 
 # 3 data exploration
-# view the dimension of the data
+# a. Show the dimensions of the data frame. Hint: Use dim()
 dim(titanic)
-# view the structure of the data
+# b. Show the structure of the data frame. Hint: Use str()
 str(titanic)
-# view the first and last 10 rows of the data
+# c. Get more insight into data by exploring the first and the last TEN rows in the dataset.
 head(titanic, 10)
 tail(titanic, 10)
-# view the summary of the data
+# d. Show summary of all variables in the data frame.
 summary(titanic)
-# view the summary of the age variable
-
 
 # 4 variable exploration
 # a. Show a summary for the variable age only
 summary(titanic$Age)
 # b. What are the first and third quartile values for this variable? What do these values mean?
-# The first quartile (Q1) is the value below which 25% of the data falls, and the third quartile (Q3) is the value below which 75% of the data falls. These values help to understand the distribution of the age variable and identify any potential outliers.
+# The first quartile (Q1) is the value below which 25% of the data falls, 
+# and the third quartile (Q3) is the value below which 75% of the data falls.
+# These values help to understand the distribution of the age variable and identify any potential outliers.
 
 # c. Are there any missing values in the variable age? (i.e. written as <NA>)
 # Hint: Read the documentation for is.na() and anyNA() to find out how to
@@ -33,16 +33,19 @@ summary(titanic$Age)
 # between them? Which one is better to use in this case?
 is.na(titanic$Age)
 anyNA(titanic$Age)
-# The is.na() function returns a logical vector indicating which elements are NA, while the anyNA() function returns a single logical value indicating if there are any NA values in the entire vector. In this case, anyNA() is better to use as it provides a quick way to check for the presence of missing values without having to inspect each element individually.
+# The is.na() function returns a logical vector indicating which elements are NA, 
+# while the anyNA() function returns a single logical value indicating if there are any NA values in the entire vector. 
+# In this case, anyNA() is better to use as it provides a quick way to check for the presence of missing values 
+# without having to inspect each element individually.
 
 # d. What is the type of the variable embarked? Show the levels of this variable. Is that what you
 # were expecting?
 str(titanic$Embarked)
 levels(titanic$Embarked)
-# The variable embarked is a factor variable, and the levels are "C", "Q", and "S". This is what I was expecting as these represent the three ports of embarkation for the passengers on the Titanic: Cherbourg (C), Queenstown (Q), and Southampton (S).
+# TODO
 
 # e. Can you conclude what’s needed at this step in the data analysis cycle?
-# At this step in the data analysis cycle, we need to perform data cleaning and preprocessing. This includes handling missing values in the Age variable, ensuring that the Embarked variable is properly encoded as a factor, and possibly exploring the distribution of the Age variable to identify any outliers or skewness. Additionally, we may want to check for any inconsistencies or errors in the data before proceeding with further analysis.
+# At this step in the data analysis cycle, we need to perform data cleaning and preprocessing.
 
 
 # 5 data preprocessing
@@ -98,3 +101,9 @@ boxplot(titanic_clean$Age, main = "Boxplot of Age", ylab = "Age")
 # The box and whiskers plot (or boxplot) provides a visual summary of the distribution of the Age variable. The box represents the interquartile range (IQR), which contains the middle 50% of the data. The line inside the box represents the median age. The "whiskers" extend from the box to the smallest and largest values within 1.5 times the IQR from the lower and upper quartiles, respectively. Any points outside of this range are considered outliers and are typically plotted as individual points. This plot helps to identify the central tendency, variability, and potential outliers in the Age variable.
 # l. Plot a density distribution for the variable age.
 plot(density(titanic_clean$Age), main = "Density Plot of Age", xlab = "Age", ylab = "Density")
+
+# 7
+# Remove all columns but passenger name and whether they survived or not. Export the new
+# dataset to a file named “titanic_preprocessed.csv”
+titanic_final <- titanic_clean[, c("Name", "Survived")]
+write.csv(titanic_final, "titanic_preprocessed.csv", row.names = FALSE
