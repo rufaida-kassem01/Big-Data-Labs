@@ -1,7 +1,7 @@
 # Student 1 Name: Rufaida Muhammad Sayed Ahmed
 # Student 1 ID: 9202550
-# Student 2 Name: 
-# Student 2 ID: 
+# Student 2 Name: Rawan Ahmed Fouad
+# Student 2 ID: 9220302
 
 # Lab 1:
 # 1
@@ -9,7 +9,7 @@
 rm(list = ls())
 
 # set the working directory to the folder containing the data file
-setwd(dirname(file.choose()))  
+getwd()
 # A dialog will open
 # navigate to titanic.csv and select it
 
@@ -41,6 +41,7 @@ print(summary(titanic))
 # a. Show a summary for the variable age only
 cat("4.a Summary for the variable age:\n")
 print(summary(titanic$Age))
+
 # b. What are the first and third quartile values for this variable? What do these values mean?
 # The first quartile (Q1) is the value below which 25% of the data falls, 
 # and the third quartile (Q3) is the value below which 75% of the data falls.
