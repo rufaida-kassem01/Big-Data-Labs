@@ -99,22 +99,21 @@ print(names(titanic_clean))
 
 # a. Show the number of males and females aboard the Titanic.
 cat("6.a Number of males and females aboard the Titanic:\n")
-print(table(titanic_clean$Sex))
+print(table(titanic_clean$Gender))
 
 # b. Plot a pie chart showing the number of males and females aboard the Titanic. (Hint: use
 # pie() function).
 # Indicate males with a blue color and females with a red color in the above plot. (Hint: There
 # is a color parameter in any plot function).
 
-pie(table(titanic_clean$Sex), main = "Number of Males and Females aboard the Titanic", col = c("blue", "red"))
+pie(table(titanic_clean$Gender), main = "Number of Males and Females aboard the Titanic", col = c("blue", "red"))
 
 # c. Show the number of people who survived and didn’t survive from each gender.
 cat("6.c Number of people who survived and didn’t survive from each gender:\n")
-print(table(titanic_clean$Sex, titanic_clean$Survived))
-
+print(table(titanic_clean$Gender, titanic_clean$Survived))
 # d. Plot a pie chart showing the number of males and females who survived only.
-survived_by_sex <- table(titanic_clean$Sex[titanic_clean$Survived == 1])
-pie(survived_by_sex, main = "Number of Survivors by Gender", col = c("blue", "red"))
+survived_by_gender <- table(titanic_clean$Gender[titanic_clean$Survived == 1])
+pie(survived_by_gender, main = "Number of Survivors by Gender", col = c("blue", "red"))
 
 # # e. What do you conclude from that?
 # # TODO
