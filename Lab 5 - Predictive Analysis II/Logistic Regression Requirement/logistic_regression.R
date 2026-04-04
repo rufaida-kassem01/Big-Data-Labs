@@ -39,10 +39,12 @@ cor.mat <- cor(Mydata[,-1]) # the input variables
 cor.mat # Note: The general rule is not to include variables in your model that are
         # too highly correlated with other predictors.
         # corr 0: independent, corr 1: highly correlated, corr -1: highly correlated in inverse direction
+print(cor.mat)
 
 #(Q1) Write the variable pairs that are not correlated at all to each other.
-
+print("variable that are not correlated are (price,Income) , (Price,Age) ")
 #(Q2) Are there any highly correlated variables in this dataset?
+print("there is no high coreelated variavles in the data set")
 
 # [2] Test a model with 3 variables Price, Income and Age
 mylogit <- glm(MYDEPV ~ Income + Age + as.factor(Price),
@@ -69,7 +71,9 @@ summary(mylogit)
     # as.factor(Price)20, as.factor(Price)30
 
 #(Q3): How many categories are there for the Price variable? 
+print("3 cat for price (10,20,30)")
 #(Q4): Why is it divided into two entries only in the model?
+print("because Logistic regression takes one as refrence so only two variables are created in our case we has 10,20,30 we make 2 boolen variable one for 20 and one for 30 if the value is 10 both have 0 value")
 
 	# Review the "Estimate" column. For every one unit change in Income (while other variables are constants), 
 	# the log odd ratio of Purchase (not the probability) increases by 0.12876 (the coefficients)
@@ -90,9 +94,10 @@ aucObj = performance(predObj, measure="auc")  # auc object
 auc = aucObj@y.values[[1]]
 auc   # the auc score: tells you how well the model predicts.
 #(Q5.1) Write the value of this expression (just the number)
-
+print(auc)
+print("the auc value is 0.915")
 #(Q5.2) What is the maximum value of AUC (ideal case)?
-
+print("The maximum value of AUC is 1, which represents a perfect classifier")
 # plot the roc curve
 plot(rocObj, main = paste("Area under the curve:", auc))
 
@@ -109,6 +114,7 @@ newdata1 <- data.frame(Income,Age,Price) # Note: The predict function requires t
 newdata1
 newdata1$PurchaseP <- predict (mylogit,newdata=newdata1,type="response")
 newdata1  
+print (newdata1)
 #(Q7) How is the predicted probability affected by changing only price holding all other variables constant?
 
 #Prediction - 2 
