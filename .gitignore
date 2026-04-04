@@ -23,3 +23,6 @@ TestResults.xml
 #Tutorial folder
 Tutorial*/
 .Rproj.user
+# add .csv files to ignore list
+*.csv
+*.tsv
